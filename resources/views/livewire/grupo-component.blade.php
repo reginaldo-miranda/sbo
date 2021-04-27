@@ -1,6 +1,14 @@
 <div>
     {{-- Nothing in the world is as soft and yielding as water. --}}
-    <p>aqui é um livewire novo</p>
+
+    <form wire:submit.prevent="create" method="post">
+         
+         <input type="text" wire:model="nome" style="border :2px solid #f00">
+         <input type="text" wire:model="comissao" style="border :2px solid #f00">
+         <button type="submit">gravar</button>
+
+  </form>
+    {{-- 
     <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -30,5 +38,5 @@
             <td>@twitter</td>
           </tr>
         </tbody>
-      </table>
+      </table>  --}}
 </div>
