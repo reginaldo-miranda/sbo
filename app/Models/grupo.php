@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class grupo extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id_grupo' ;
     protected $fillable = ['nome', 'comissao'];
 }
