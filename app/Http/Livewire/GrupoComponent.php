@@ -4,10 +4,12 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\grupo;
+use Livewire\WithPagination;
 
 
 class GrupoComponent extends Component
 {
+    
     public $id_grupo; 
     public $nome;
     public $comissao;
@@ -17,17 +19,20 @@ class GrupoComponent extends Component
         'nome' =>'required',
         'comissao'=>'required'
     ];
-
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
  /*   public function mount(){
         $grupo = grupo::get();
     
         return view('livewire.grupo-component',compact('grupo'));
     }*/
-
+    
     public function render()
-    {
+    {   
+        
         return view('livewire.grupo-component',[
-            'grupos' => grupo::all('id_grupo','nome','comissao')
+           'grupos' => grupo::paginate(6),
+          /* 'grupos' => grupo::all('id_grupo','nome','comissao'), */
         ]);
     }
 
@@ -47,3 +52,5 @@ class GrupoComponent extends Component
         grupo::destroy($id_grupo);
     }
 }
+
+/* https://www.youtube.com/watch?v=kBEyGQBjGnI&list=PLhCiuvlix-rSRRmZAL2CNOMAUjgEiFoSl&index=6 */
